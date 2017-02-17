@@ -1,0 +1,46 @@
+<project name="CST316Lab6" default="build" basedir=".">
+    <property name="src" value="src" />
+	<property name="build" value="build" />
+	<property name="jars" value="jars"/>
+	<property name="given" value="../lab6given.jar"/>
+
+        <path id="compile.classpath">
+            <pathelement path="${build}/classes"/>  
+            <fileset dir="${jars}">
+               <include name="**/*.jar"/>
+            </fileset>          
+        </path>
+	
+	<target name="prepare">
+		<tstamp/>
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="prepare">
+		<mkdir dir="${build}/classes" />
+		<javac srcdir="${src}" destdir="${build}/classes" />
+	</target>
+
+	<target name="build" depends="compile">
+		<copy todir="${build}" file="my.properties"/>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}" />
+		<delete file="${jar}" />
+		<delete file="${given}" />
+	</target>
+
+	<!-- create the given .java files -->
+	<target name="given" depends="build">
+		<delete file="${given}" />
+		<mkdir dir="t" />
+		<copy todir="t">
+			<fileset dir="." includes="**/*Test.java, build.xml, *.properties"/>
+			<fileset dir="${build}"/>
+			<fileset file="build.xml"/>
+		</copy>
+		<jar jarfile="${given}"  basedir="t" />
+		<delete dir="t" />
+	</target>
+</project>
