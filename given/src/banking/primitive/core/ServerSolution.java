@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.io.*;
 
-import banking.primitive.core.Account.State;
+import banking.primitive.core.Account.STATE;
 
 class ServerSolution implements AccountServer {
 
@@ -81,7 +81,7 @@ class ServerSolution implements AccountServer {
 		if (acc == null) {
 			return false;
 		}
-		acc.setState(State.CLOSED);
+		acc.setState(STATE.CLOSED);
 		return true;
 	}
 
@@ -97,7 +97,7 @@ class ServerSolution implements AccountServer {
 		List<Account> result = new ArrayList<Account>();
 
 		for (Account acc : accountMap.values()) {
-			if (acc.getState() != State.CLOSED) {
+			if (acc.getState() != STATE.CLOSED) {
 				result.add(acc);
 			}
 		}

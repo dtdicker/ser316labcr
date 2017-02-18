@@ -22,10 +22,10 @@ public class Checking extends Account {
 	 * @param float is the deposit amount
 	 */
 	public boolean deposit(float amount) {
-		if (getState() != State.CLOSED && amount > 0.0f) {
+		if (getState() != STATE.CLOSED && amount > 0.0f) {
 			balance = balance + amount;
 			if (balance >= 0.0f) {
-				setState(State.OPEN);
+				setState(STATE.OPEN);
 			}
 			return true;
 		}
@@ -39,13 +39,13 @@ public class Checking extends Account {
 	public boolean withdraw(float amount) {
 		if (amount > 0.0f) {		
 			// KG: incorrect, last balance check should be >=
-			if (getState() == State.OPEN || (getState() == State.OVERDRAWN && balance > -100.0f)) {
+			if (getState() == STATE.OPEN || (getState() == STATE.OVERDRAWN && balance > -100.0f)) {
 				balance = balance - amount;
 				numWithdraws++;
 				if (numWithdraws > 10)
 					balance = balance - 2.0f;
 				if (balance < 0.0f) {
-					setState(State.OVERDRAWN);
+					setState(STATE.OVERDRAWN);
 				}
 				return true;
 			}
