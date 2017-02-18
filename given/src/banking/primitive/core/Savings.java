@@ -21,8 +21,10 @@ public class Savings extends Account {
 			if (balance >= 0.0f) {
 				setState(STATE.OPEN);
 			}
+			return true;
 		}
-		return false;
+		else
+			return false;
 	}
 
 	/**
