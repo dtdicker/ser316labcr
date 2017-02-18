@@ -3,10 +3,10 @@ package banking.gui;
 import javax.swing.JFrame;
 
 /**
- * main method for running the program.
- * @author kevinagary
- *
- */
+	Class: Main
+
+	Description: main method for running the program.
+*/
 final class Main {
 	/**
 	 * Private constructor to address STYLE issue.
