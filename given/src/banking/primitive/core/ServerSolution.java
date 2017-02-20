@@ -22,9 +22,7 @@ class ServerSolution implements AccountServer {
 			if (file.exists()) {
 				System.out.println("Reading from file " + fileName + "...");
 				in = new ObjectInputStream(new FileInputStream(file));
-
-				Integer sizeI = (Integer) in.readObject();
-				int size = sizeI.intValue();
+				int size = (int) in.readObject();
 				for (int i=0; i < size; i++) {
 					Account acc = (Account) in.readObject();
 					if (acc != null)
