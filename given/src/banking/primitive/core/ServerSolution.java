@@ -108,10 +108,10 @@ class ServerSolution implements AccountServer {
 		ObjectOutputStream out = null; 
 		try {
 			out = new ObjectOutputStream(new FileOutputStream(fileName));
-
+			List<Account> accList = getAllAccounts();
 			out.writeObject(Integer.valueOf(accountMap.size()));
 			for (int i=0; i < accountMap.size(); i++) {
-				out.writeObject(accountMap.get(i));
+				out.writeObject(accList.get(i));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
